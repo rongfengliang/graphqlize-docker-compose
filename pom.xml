@@ -55,12 +55,45 @@
 	</dependencies>
 
 	<build>
+
+		<finalName>graphqlize-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>utf-8</encoding>
+					<useDefaultDelimiters>true</useDefaultDelimiters>
+					<resources>
+						<resource>
+							<directory>src/main/resources</directory>
+							<filtering>true</filtering>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+                <pg-data-source>jdbc:postgresql://localhost:5432/postgres</pg-data-source>
+				<pg-username>postgres</pg-username>
+				<pg-password>dalong</pg-password>
+			</properties>
+		</profile>
+		<profile>
+			<id>docker</id>
+			<properties>
+				<pg-data-source>jdbc:postgresql://pg:5432/postgres</pg-data-source>
+				<pg-username>postgres</pg-username>
+				<pg-password>dalong</pg-password>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>
