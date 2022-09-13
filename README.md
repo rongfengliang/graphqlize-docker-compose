@@ -32,3 +32,7 @@ playground:  http://localhost:8080/playground.html
 voyager: http://localhost:8080/voyager.html
 
 ```
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
